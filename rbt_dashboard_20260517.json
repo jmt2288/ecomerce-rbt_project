@@ -1,0 +1,3011 @@
+{
+  "uid": "rbt-security-v1",
+  "title": "RBT Security Dashboard",
+  "schemaVersion": 38,
+  "version": 7,
+  "refresh": "5s",
+  "time": {
+    "from": "now-30m",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "tags": [
+    "rbt",
+    "security",
+    "prometheus"
+  ],
+  "panels": [
+    {
+      "id": 1,
+      "type": "stat",
+      "title": "Total Requests",
+      "gridPos": {
+        "x": 0,
+        "y": 0,
+        "w": 4,
+        "h": 4
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "rbt-prometheus"
+      },
+      "targets": [
+        {
+          "expr": "sum(http_requests_total) or vector(0)",
+          "legendFormat": "Total Requests",
+          "refId": "A",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "rbt-prometheus"
+          },
+          "instant": true
+        }
+      ],
+      "options": {
+        "reduceOptions": {
+          "values": false,
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": ""
+        },
+        "colorMode": "background",
+        "graphMode": "area",
+        "orientation": "auto",
+        "textMode": "auto",
+        "justifyMode": "auto",
+        "noValue": "0"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "noValue": "0",
+          "unit": "short",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              },
+              {
+                "color": "green",
+                "value": 1
+              }
+            ]
+          },
+          "mappings": []
+        }
+      }
+    },
+    {
+      "id": 2,
+      "type": "stat",
+      "title": "Blocked Requests",
+      "gridPos": {
+        "x": 4,
+        "y": 0,
+        "w": 4,
+        "h": 4
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "rbt-prometheus"
+      },
+      "targets": [
+        {
+          "expr": "sum(blocked_requests_total) or vector(0)",
+          "legendFormat": "Blocked Requests",
+          "refId": "A",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "rbt-prometheus"
+          },
+          "instant": true
+        }
+      ],
+      "options": {
+        "reduceOptions": {
+          "values": false,
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": ""
+        },
+        "colorMode": "background",
+        "graphMode": "area",
+        "orientation": "auto",
+        "textMode": "auto",
+        "justifyMode": "auto",
+        "noValue": "0"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "noValue": "0",
+          "unit": "short",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "orange",
+                "value": 1
+              },
+              {
+                "color": "red",
+                "value": 10
+              }
+            ]
+          },
+          "mappings": []
+        }
+      }
+    },
+    {
+      "id": 3,
+      "type": "stat",
+      "title": "ML Blocked",
+      "gridPos": {
+        "x": 8,
+        "y": 0,
+        "w": 4,
+        "h": 4
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "rbt-prometheus"
+      },
+      "targets": [
+        {
+          "expr": "sum(ml_blocked_total) or vector(0)",
+          "legendFormat": "ML Blocked",
+          "refId": "A",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "rbt-prometheus"
+          },
+          "instant": true
+        }
+      ],
+      "options": {
+        "reduceOptions": {
+          "values": false,
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": ""
+        },
+        "colorMode": "background",
+        "graphMode": "area",
+        "orientation": "auto",
+        "textMode": "auto",
+        "justifyMode": "auto",
+        "noValue": "0"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "noValue": "0",
+          "unit": "short",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 1
+              }
+            ]
+          },
+          "mappings": []
+        }
+      }
+    },
+    {
+      "id": 4,
+      "type": "stat",
+      "title": "False Positives",
+      "gridPos": {
+        "x": 12,
+        "y": 0,
+        "w": 4,
+        "h": 4
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "rbt-prometheus"
+      },
+      "targets": [
+        {
+          "expr": "sum(false_positive_blocks_total) or vector(0)",
+          "legendFormat": "False Positives",
+          "refId": "A",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "rbt-prometheus"
+          },
+          "instant": true
+        }
+      ],
+      "options": {
+        "reduceOptions": {
+          "values": false,
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": ""
+        },
+        "colorMode": "background",
+        "graphMode": "area",
+        "orientation": "auto",
+        "textMode": "auto",
+        "justifyMode": "auto",
+        "noValue": "0"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "noValue": "0",
+          "unit": "short",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "yellow",
+                "value": 1
+              },
+              {
+                "color": "red",
+                "value": 5
+              }
+            ]
+          },
+          "mappings": []
+        }
+      }
+    },
+    {
+      "id": 5,
+      "type": "stat",
+      "title": "Login Failures",
+      "gridPos": {
+        "x": 16,
+        "y": 0,
+        "w": 4,
+        "h": 4
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "rbt-prometheus"
+      },
+      "targets": [
+        {
+          "expr": "sum(login_failures_total) or vector(0)",
+          "legendFormat": "Login Failures",
+          "refId": "A",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "rbt-prometheus"
+          },
+          "instant": true
+        }
+      ],
+      "options": {
+        "reduceOptions": {
+          "values": false,
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": ""
+        },
+        "colorMode": "background",
+        "graphMode": "area",
+        "orientation": "auto",
+        "textMode": "auto",
+        "justifyMode": "auto",
+        "noValue": "0"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "noValue": "0",
+          "unit": "short",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "orange",
+                "value": 5
+              },
+              {
+                "color": "red",
+                "value": 20
+              }
+            ]
+          },
+          "mappings": []
+        }
+      }
+    },
+    {
+      "id": 6,
+      "type": "stat",
+      "title": "ML Model Status",
+      "gridPos": {
+        "x": 20,
+        "y": 0,
+        "w": 4,
+        "h": 4
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "rbt-prometheus"
+      },
+      "targets": [
+        {
+          "expr": "clamp_max(count(bot_ml_probability > 0) or vector(0), 1)",
+          "legendFormat": "ML Model Status",
+          "refId": "A",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "rbt-prometheus"
+          },
+          "instant": true
+        }
+      ],
+      "options": {
+        "reduceOptions": {
+          "values": false,
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": ""
+        },
+        "colorMode": "background",
+        "graphMode": "area",
+        "orientation": "auto",
+        "textMode": "auto",
+        "justifyMode": "auto",
+        "noValue": "0"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "noValue": "0",
+          "unit": "short",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "green",
+                "value": 1
+              }
+            ]
+          },
+          "mappings": [
+            {
+              "type": "value",
+              "options": {
+                "1": {
+                  "text": "ACTIVE",
+                  "color": "green",
+                  "index": 0
+                }
+              }
+            },
+            {
+              "type": "special",
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "NO MODEL",
+                  "color": "red",
+                  "index": 1
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": 7,
+      "type": "stat",
+      "title": "Active Users",
+      "gridPos": {
+        "x": 0,
+        "y": 4,
+        "w": 4,
+        "h": 4
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "rbt-prometheus"
+      },
+      "targets": [
+        {
+          "expr": "active_users_total or vector(0)",
+          "legendFormat": "Active Users",
+          "refId": "A",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "rbt-prometheus"
+          },
+          "instant": true
+        }
+      ],
+      "options": {
+        "reduceOptions": {
+          "values": false,
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": ""
+        },
+        "colorMode": "background",
+        "graphMode": "area",
+        "orientation": "auto",
+        "textMode": "auto",
+        "justifyMode": "auto",
+        "noValue": "0"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "noValue": "0",
+          "unit": "short",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "yellow",
+                "value": 10
+              },
+              {
+                "color": "red",
+                "value": 50
+              }
+            ]
+          },
+          "mappings": []
+        }
+      }
+    },
+    {
+      "id": 8,
+      "type": "stat",
+      "title": "Threat Level",
+      "gridPos": {
+        "x": 4,
+        "y": 4,
+        "w": 4,
+        "h": 4
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "rbt-prometheus"
+      },
+      "targets": [
+        {
+          "expr": "system_threat_level or vector(0)",
+          "legendFormat": "Threat Level",
+          "refId": "A",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "rbt-prometheus"
+          },
+          "instant": true
+        }
+      ],
+      "options": {
+        "reduceOptions": {
+          "values": false,
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": ""
+        },
+        "colorMode": "background",
+        "graphMode": "area",
+        "orientation": "auto",
+        "textMode": "auto",
+        "justifyMode": "auto",
+        "noValue": "0"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "noValue": "0",
+          "unit": "short",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "orange",
+                "value": 1
+              },
+              {
+                "color": "red",
+                "value": 2
+              }
+            ]
+          },
+          "mappings": [
+            {
+              "type": "value",
+              "options": {
+                "0": {
+                  "text": "LOW",
+                  "color": "green",
+                  "index": 0
+                },
+                "1": {
+                  "text": "MEDIUM",
+                  "color": "orange",
+                  "index": 1
+                },
+                "2": {
+                  "text": "HIGH",
+                  "color": "red",
+                  "index": 2
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": 9,
+      "type": "stat",
+      "title": "Login Success Rate",
+      "gridPos": {
+        "x": 8,
+        "y": 4,
+        "w": 4,
+        "h": 4
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "rbt-prometheus"
+      },
+      "targets": [
+        {
+          "expr": "sum(rate(login_success_total[5m])) / (sum(rate(login_success_total[5m])) + sum(rate(login_failures_total[5m])) + 0.001)",
+          "legendFormat": "Login Success Rate",
+          "refId": "A",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "rbt-prometheus"
+          },
+          "instant": true
+        }
+      ],
+      "options": {
+        "reduceOptions": {
+          "values": false,
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": ""
+        },
+        "colorMode": "background",
+        "graphMode": "area",
+        "orientation": "auto",
+        "textMode": "auto",
+        "justifyMode": "auto",
+        "noValue": "0"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "noValue": "0",
+          "unit": "percentunit",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "orange",
+                "value": 0.3
+              },
+              {
+                "color": "green",
+                "value": 0.8
+              }
+            ]
+          },
+          "mappings": []
+        }
+      }
+    },
+    {
+      "id": 10,
+      "type": "stat",
+      "title": "Bypass Attempts",
+      "gridPos": {
+        "x": 12,
+        "y": 4,
+        "w": 4,
+        "h": 4
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "rbt-prometheus"
+      },
+      "targets": [
+        {
+          "expr": "sum(bypass_attempts_total) or vector(0)",
+          "legendFormat": "Bypass Attempts",
+          "refId": "A",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "rbt-prometheus"
+          },
+          "instant": true
+        }
+      ],
+      "options": {
+        "reduceOptions": {
+          "values": false,
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": ""
+        },
+        "colorMode": "background",
+        "graphMode": "area",
+        "orientation": "auto",
+        "textMode": "auto",
+        "justifyMode": "auto",
+        "noValue": "0"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "noValue": "0",
+          "unit": "short",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "yellow",
+                "value": 1
+              },
+              {
+                "color": "red",
+                "value": 5
+              }
+            ]
+          },
+          "mappings": []
+        }
+      }
+    },
+    {
+      "id": 11,
+      "type": "stat",
+      "title": "Avg Latency P50",
+      "gridPos": {
+        "x": 16,
+        "y": 4,
+        "w": 4,
+        "h": 4
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "rbt-prometheus"
+      },
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.5, sum(rate(http_request_duration_seconds_bucket[5m])) by (le)) or vector(0)",
+          "legendFormat": "Avg Latency P50",
+          "refId": "A",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "rbt-prometheus"
+          },
+          "instant": true
+        }
+      ],
+      "options": {
+        "reduceOptions": {
+          "values": false,
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": ""
+        },
+        "colorMode": "background",
+        "graphMode": "area",
+        "orientation": "auto",
+        "textMode": "auto",
+        "justifyMode": "auto",
+        "noValue": "0"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "noValue": "0",
+          "unit": "s",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "yellow",
+                "value": 0.5
+              },
+              {
+                "color": "red",
+                "value": 1.0
+              }
+            ]
+          },
+          "mappings": []
+        }
+      }
+    },
+    {
+      "id": 12,
+      "type": "stat",
+      "title": "P99 Latency",
+      "gridPos": {
+        "x": 20,
+        "y": 4,
+        "w": 4,
+        "h": 4
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "rbt-prometheus"
+      },
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.99, sum(rate(http_request_duration_seconds_bucket[5m])) by (le)) or vector(0)",
+          "legendFormat": "P99 Latency",
+          "refId": "A",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "rbt-prometheus"
+          },
+          "instant": true
+        }
+      ],
+      "options": {
+        "reduceOptions": {
+          "values": false,
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": ""
+        },
+        "colorMode": "background",
+        "graphMode": "area",
+        "orientation": "auto",
+        "textMode": "auto",
+        "justifyMode": "auto",
+        "noValue": "0"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "noValue": "0",
+          "unit": "s",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "orange",
+                "value": 1.0
+              },
+              {
+                "color": "red",
+                "value": 2.0
+              }
+            ]
+          },
+          "mappings": []
+        }
+      }
+    },
+    {
+      "id": 13,
+      "type": "timeseries",
+      "title": "Requests per Second by Endpoint",
+      "gridPos": {
+        "x": 0,
+        "y": 8,
+        "w": 12,
+        "h": 8
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "rbt-prometheus"
+      },
+      "targets": [
+        {
+          "expr": "sum by(endpoint)(rate(http_requests_total[1m]))",
+          "legendFormat": "{{endpoint}}",
+          "refId": "A",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "rbt-prometheus"
+          }
+        }
+      ],
+      "options": {
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 10,
+            "spanNulls": true,
+            "drawStyle": "line",
+            "lineInterpolation": "linear",
+            "showPoints": "never"
+          },
+          "color": {
+            "mode": "palette-classic"
+          },
+          "unit": "reqps",
+          "min": 0,
+          "noValue": "0"
+        },
+        "overrides": []
+      }
+    },
+    {
+      "id": 14,
+      "type": "timeseries",
+      "title": "Blocked Requests by Reason",
+      "gridPos": {
+        "x": 12,
+        "y": 8,
+        "w": 12,
+        "h": 8
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "rbt-prometheus"
+      },
+      "targets": [
+        {
+          "expr": "sum by(reason)(rate(blocked_requests_total[1m]))",
+          "legendFormat": "Rules: {{reason}}",
+          "refId": "A",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "rbt-prometheus"
+          }
+        },
+        {
+          "expr": "sum(rate(ml_blocked_total[1m])) or vector(0)",
+          "legendFormat": "ML blocked",
+          "refId": "B",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "rbt-prometheus"
+          }
+        }
+      ],
+      "options": {
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 10,
+            "spanNulls": true,
+            "drawStyle": "line",
+            "lineInterpolation": "linear",
+            "showPoints": "never"
+          },
+          "color": {
+            "mode": "palette-classic"
+          },
+          "unit": "reqps",
+          "min": 0,
+          "noValue": "0"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "ML blocked"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "mode": "fixed",
+                  "fixedColor": "red"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 15,
+      "type": "heatmap",
+      "title": "Request Latency Heatmap",
+      "gridPos": {
+        "x": 0,
+        "y": 16,
+        "w": 12,
+        "h": 8
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "rbt-prometheus"
+      },
+      "targets": [
+        {
+          "expr": "sum(rate(http_request_duration_seconds_bucket[1m])) by (le)",
+          "legendFormat": "{{le}}",
+          "refId": "A",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "rbt-prometheus"
+          }
+        }
+      ],
+      "options": {
+        "calculate": false,
+        "color": {
+          "scheme": "Oranges",
+          "steps": 64
+        },
+        "cellGap": 1,
+        "fillOpacity": 80,
+        "tooltip": {
+          "show": true,
+          "yHistogram": false
+        }
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": 16,
+      "type": "timeseries",
+      "title": "Latency Percentiles (P50 / P95 / P99)",
+      "gridPos": {
+        "x": 12,
+        "y": 16,
+        "w": 12,
+        "h": 8
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "rbt-prometheus"
+      },
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.50, sum(rate(http_request_duration_seconds_bucket[1m])) by (le))",
+          "legendFormat": "P50",
+          "refId": "A",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "rbt-prometheus"
+          }
+        },
+        {
+          "expr": "histogram_quantile(0.95, sum(rate(http_request_duration_seconds_bucket[1m])) by (le))",
+          "legendFormat": "P95",
+          "refId": "B",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "rbt-prometheus"
+          }
+        },
+        {
+          "expr": "histogram_quantile(0.99, sum(rate(http_request_duration_seconds_bucket[1m])) by (le))",
+          "legendFormat": "P99",
+          "refId": "C",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "rbt-prometheus"
+          }
+        }
+      ],
+      "options": {
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 10,
+            "spanNulls": true,
+            "drawStyle": "line",
+            "lineInterpolation": "linear",
+            "showPoints": "never"
+          },
+          "color": {
+            "mode": "palette-classic"
+          },
+          "unit": "s",
+          "min": 0,
+          "noValue": "0"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "P99"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "mode": "fixed",
+                  "fixedColor": "red"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "P95"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "mode": "fixed",
+                  "fixedColor": "orange"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "P50"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "mode": "fixed",
+                  "fixedColor": "green"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 17,
+      "type": "timeseries",
+      "title": "Bot ML Probability per User",
+      "gridPos": {
+        "x": 0,
+        "y": 24,
+        "w": 12,
+        "h": 8
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "rbt-prometheus"
+      },
+      "targets": [
+        {
+          "expr": "bot_ml_probability",
+          "legendFormat": "{{identifier}}",
+          "refId": "A",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "rbt-prometheus"
+          }
+        }
+      ],
+      "options": {
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 10,
+            "spanNulls": true,
+            "drawStyle": "line",
+            "lineInterpolation": "linear",
+            "showPoints": "never"
+          },
+          "color": {
+            "mode": "palette-classic"
+          },
+          "unit": "percentunit",
+          "min": 0,
+          "noValue": "0",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "yellow",
+                "value": 0.5
+              },
+              {
+                "color": "red",
+                "value": 0.8
+              }
+            ]
+          },
+          "max": 1
+        },
+        "overrides": []
+      }
+    },
+    {
+      "id": 18,
+      "type": "timeseries",
+      "title": "Risk Score per User",
+      "gridPos": {
+        "x": 12,
+        "y": 24,
+        "w": 12,
+        "h": 8
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "rbt-prometheus"
+      },
+      "targets": [
+        {
+          "expr": "current_risk_score",
+          "legendFormat": "{{identifier}}",
+          "refId": "A",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "rbt-prometheus"
+          }
+        }
+      ],
+      "options": {
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 10,
+            "spanNulls": true,
+            "drawStyle": "line",
+            "lineInterpolation": "stepAfter",
+            "showPoints": "never"
+          },
+          "color": {
+            "mode": "palette-classic"
+          },
+          "unit": "short",
+          "min": 0,
+          "noValue": "0",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "yellow",
+                "value": 15
+              },
+              {
+                "color": "orange",
+                "value": 25
+              },
+              {
+                "color": "red",
+                "value": 30
+              }
+            ]
+          }
+        },
+        "overrides": []
+      }
+    },
+    {
+      "id": 19,
+      "type": "timeseries",
+      "title": "Login Success vs Failures per Second",
+      "gridPos": {
+        "x": 0,
+        "y": 32,
+        "w": 12,
+        "h": 8
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "rbt-prometheus"
+      },
+      "targets": [
+        {
+          "expr": "sum(rate(login_success_total[1m])) or vector(0)",
+          "legendFormat": "Success",
+          "refId": "A",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "rbt-prometheus"
+          }
+        },
+        {
+          "expr": "sum(rate(login_failures_total[1m]))",
+          "legendFormat": "Failures",
+          "refId": "B",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "rbt-prometheus"
+          }
+        }
+      ],
+      "options": {
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 10,
+            "spanNulls": true,
+            "drawStyle": "line",
+            "lineInterpolation": "linear",
+            "showPoints": "never"
+          },
+          "color": {
+            "mode": "palette-classic"
+          },
+          "unit": "reqps",
+          "min": 0,
+          "noValue": "0"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Failures"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "mode": "fixed",
+                  "fixedColor": "red"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Success"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "mode": "fixed",
+                  "fixedColor": "green"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 20,
+      "type": "timeseries",
+      "title": "False Positives Over Time",
+      "gridPos": {
+        "x": 12,
+        "y": 32,
+        "w": 12,
+        "h": 8
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "rbt-prometheus"
+      },
+      "targets": [
+        {
+          "expr": "sum by()(rate(false_positive_blocks_total[2m])) * 120",
+          "legendFormat": "False Positives (2min window)",
+          "refId": "A",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "rbt-prometheus"
+          }
+        },
+        {
+          "expr": "sum(false_positive_blocks_total) or vector(0)",
+          "legendFormat": "Cumulative total",
+          "refId": "B",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "rbt-prometheus"
+          }
+        }
+      ],
+      "options": {
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 10,
+            "spanNulls": true,
+            "drawStyle": "line",
+            "lineInterpolation": "stepAfter",
+            "showPoints": "never"
+          },
+          "color": {
+            "mode": "palette-classic"
+          },
+          "unit": "short",
+          "min": 0,
+          "noValue": "0"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Cumulative total"
+            },
+            "properties": [
+              {
+                "id": "custom.lineStyle",
+                "value": {
+                  "fill": "dash",
+                  "dash": [
+                    8,
+                    4
+                  ]
+                }
+              },
+              {
+                "id": "custom.lineWidth",
+                "value": 1
+              },
+              {
+                "id": "custom.fillOpacity",
+                "value": 0
+              },
+              {
+                "id": "color",
+                "value": {
+                  "mode": "fixed",
+                  "fixedColor": "#EAB839"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 21,
+      "type": "timeseries",
+      "title": "HTTP Response Codes per Second",
+      "gridPos": {
+        "x": 0,
+        "y": 40,
+        "w": 12,
+        "h": 8
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "rbt-prometheus"
+      },
+      "targets": [
+        {
+          "expr": "sum by(status_code)(rate(http_responses_total[1m]))",
+          "legendFormat": "{{status_code}}",
+          "refId": "A",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "rbt-prometheus"
+          }
+        }
+      ],
+      "options": {
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 10,
+            "spanNulls": true,
+            "drawStyle": "line",
+            "lineInterpolation": "linear",
+            "showPoints": "never"
+          },
+          "color": {
+            "mode": "palette-classic"
+          },
+          "unit": "reqps",
+          "min": 0,
+          "noValue": "0"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "A"
+            },
+            "properties": [
+              {
+                "id": "custom.transform",
+                "value": "negative-Y"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 22,
+      "type": "timeseries",
+      "title": "ML Prediction Time (seconds)",
+      "gridPos": {
+        "x": 12,
+        "y": 40,
+        "w": 12,
+        "h": 8
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "rbt-prometheus"
+      },
+      "targets": [
+        {
+          "expr": "rate(ml_prediction_seconds_sum[1m]) / rate(ml_prediction_seconds_count[1m])",
+          "legendFormat": "Avg prediction time",
+          "refId": "A",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "rbt-prometheus"
+          }
+        },
+        {
+          "expr": "increase(ml_prediction_seconds_sum[5m]) / increase(ml_prediction_seconds_count[5m])",
+          "legendFormat": "Avg (5m window)",
+          "refId": "B",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "rbt-prometheus"
+          }
+        }
+      ],
+      "options": {
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 10,
+            "spanNulls": true,
+            "drawStyle": "line",
+            "lineInterpolation": "linear",
+            "showPoints": "never"
+          },
+          "color": {
+            "mode": "palette-classic"
+          },
+          "unit": "s",
+          "min": 0,
+          "noValue": "0"
+        },
+        "overrides": []
+      }
+    },
+    {
+      "id": 23,
+      "type": "timeseries",
+      "title": "Active Users Over Time",
+      "gridPos": {
+        "x": 0,
+        "y": 48,
+        "w": 12,
+        "h": 8
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "rbt-prometheus"
+      },
+      "targets": [
+        {
+          "expr": "active_users_total",
+          "legendFormat": "Active users",
+          "refId": "A",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "rbt-prometheus"
+          }
+        }
+      ],
+      "options": {
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 10,
+            "spanNulls": true,
+            "drawStyle": "line",
+            "lineInterpolation": "linear",
+            "showPoints": "never"
+          },
+          "color": {
+            "mode": "palette-classic"
+          },
+          "unit": "short",
+          "min": 0,
+          "noValue": "0",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "yellow",
+                "value": 10
+              },
+              {
+                "color": "red",
+                "value": 50
+              }
+            ]
+          }
+        },
+        "overrides": []
+      }
+    },
+    {
+      "id": 24,
+      "type": "timeseries",
+      "title": "Bypass Attempts (Allowed vs Denied)",
+      "gridPos": {
+        "x": 12,
+        "y": 48,
+        "w": 12,
+        "h": 8
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "rbt-prometheus"
+      },
+      "targets": [
+        {
+          "expr": "sum by(result)(rate(bypass_attempts_total[1m]))",
+          "legendFormat": "{{result}}",
+          "refId": "A",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "rbt-prometheus"
+          }
+        }
+      ],
+      "options": {
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 10,
+            "spanNulls": true,
+            "drawStyle": "line",
+            "lineInterpolation": "linear",
+            "showPoints": "never"
+          },
+          "color": {
+            "mode": "palette-classic"
+          },
+          "unit": "short",
+          "min": 0,
+          "noValue": "0"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "denied"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "mode": "fixed",
+                  "fixedColor": "red"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "allowed"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "mode": "fixed",
+                  "fixedColor": "yellow"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 25,
+      "type": "gauge",
+      "title": "Max Risk Score",
+      "gridPos": {
+        "x": 0,
+        "y": 56,
+        "w": 6,
+        "h": 8
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "rbt-prometheus"
+      },
+      "targets": [
+        {
+          "expr": "max(current_risk_score) or vector(0)",
+          "legendFormat": "Max Risk Score",
+          "refId": "A",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "rbt-prometheus"
+          },
+          "instant": true
+        }
+      ],
+      "options": {
+        "reduceOptions": {
+          "values": false,
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": ""
+        },
+        "orientation": "auto",
+        "showThresholdLabels": true,
+        "showThresholdMarkers": true,
+        "noValue": "0"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "min": 0,
+          "max": 100,
+          "unit": "short",
+          "noValue": "0",
+          "color": {
+            "mode": "thresholds"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "yellow",
+                "value": 15
+              },
+              {
+                "color": "orange",
+                "value": 25
+              },
+              {
+                "color": "red",
+                "value": 30
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 26,
+      "type": "gauge",
+      "title": "Max Bot Probability",
+      "gridPos": {
+        "x": 6,
+        "y": 56,
+        "w": 6,
+        "h": 8
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "rbt-prometheus"
+      },
+      "targets": [
+        {
+          "expr": "max(bot_ml_probability) or vector(0)",
+          "legendFormat": "Max Bot Probability",
+          "refId": "A",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "rbt-prometheus"
+          },
+          "instant": true
+        }
+      ],
+      "options": {
+        "reduceOptions": {
+          "values": false,
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": ""
+        },
+        "orientation": "auto",
+        "showThresholdLabels": true,
+        "showThresholdMarkers": true,
+        "noValue": "0"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "min": 0,
+          "max": 1,
+          "unit": "percentunit",
+          "noValue": "0",
+          "color": {
+            "mode": "thresholds"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "yellow",
+                "value": 0.4
+              },
+              {
+                "color": "orange",
+                "value": 0.7
+              },
+              {
+                "color": "red",
+                "value": 0.9
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": 27,
+      "type": "gauge",
+      "title": "System Threat Level",
+      "gridPos": {
+        "x": 12,
+        "y": 56,
+        "w": 6,
+        "h": 8
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "rbt-prometheus"
+      },
+      "targets": [
+        {
+          "expr": "system_threat_level or vector(0)",
+          "legendFormat": "System Threat Level",
+          "refId": "A",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "rbt-prometheus"
+          },
+          "instant": true
+        }
+      ],
+      "options": {
+        "reduceOptions": {
+          "values": false,
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": ""
+        },
+        "orientation": "auto",
+        "showThresholdLabels": true,
+        "showThresholdMarkers": true,
+        "noValue": "0"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "min": 0,
+          "max": 2,
+          "unit": "short",
+          "noValue": "0",
+          "color": {
+            "mode": "thresholds"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "orange",
+                "value": 1
+              },
+              {
+                "color": "red",
+                "value": 2
+              }
+            ]
+          },
+          "mappings": [
+            {
+              "type": "value",
+              "options": {
+                "0": {
+                  "text": "LOW",
+                  "index": 0
+                },
+                "1": {
+                  "text": "MEDIUM",
+                  "index": 1
+                },
+                "2": {
+                  "text": "HIGH",
+                  "index": 2
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": 28,
+      "type": "table",
+      "title": "Top Risk Users",
+      "gridPos": {
+        "x": 18,
+        "y": 56,
+        "w": 6,
+        "h": 8
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "rbt-prometheus"
+      },
+      "targets": [
+        {
+          "expr": "topk(10, current_risk_score)",
+          "legendFormat": "{{identifier}}",
+          "refId": "A",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "rbt-prometheus"
+          },
+          "instant": true
+        }
+      ],
+      "options": {
+        "showHeader": true,
+        "sortBy": [
+          {
+            "displayName": "Value",
+            "desc": true
+          }
+        ]
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "auto",
+            "displayMode": "color-background"
+          },
+          "noValue": "No users",
+          "color": {
+            "mode": "thresholds"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "yellow",
+                "value": 15
+              },
+              {
+                "color": "orange",
+                "value": 25
+              },
+              {
+                "color": "red",
+                "value": 30
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "identifier"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "User"
+              },
+              {
+                "id": "custom.width",
+                "value": 200
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Value"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Score"
+              },
+              {
+                "id": "custom.width",
+                "value": 80
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 29,
+      "type": "row",
+      "title": "Risk Codes \u2014 RBT-XXX-NNN Event Tracking",
+      "gridPos": {
+        "x": 0,
+        "y": 64,
+        "w": 24,
+        "h": 1
+      },
+      "collapsed": false,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "rbt-prometheus"
+      },
+      "targets": [],
+      "options": {},
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      }
+    },
+    {
+      "id": 30,
+      "type": "stat",
+      "title": "Total Risk Events",
+      "gridPos": {
+        "x": 0,
+        "y": 65,
+        "w": 4,
+        "h": 4
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "rbt-prometheus"
+      },
+      "targets": [
+        {
+          "expr": "sum(rbt_risk_events_total) or vector(0)",
+          "legendFormat": "Total Risk Events",
+          "refId": "A",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "rbt-prometheus"
+          },
+          "instant": true
+        }
+      ],
+      "options": {
+        "reduceOptions": {
+          "values": false,
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": ""
+        },
+        "colorMode": "background",
+        "graphMode": "area",
+        "orientation": "auto",
+        "textMode": "auto",
+        "justifyMode": "auto",
+        "noValue": "0"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "yellow",
+                "value": 10
+              },
+              {
+                "color": "orange",
+                "value": 50
+              },
+              {
+                "color": "red",
+                "value": 100
+              }
+            ]
+          },
+          "unit": "short",
+          "noValue": "0"
+        }
+      }
+    },
+    {
+      "id": 31,
+      "type": "stat",
+      "title": "CRITICAL Events",
+      "gridPos": {
+        "x": 4,
+        "y": 65,
+        "w": 4,
+        "h": 4
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "rbt-prometheus"
+      },
+      "targets": [
+        {
+          "expr": "sum(rbt_risk_events_total{severity=\"CRITICAL\"}) or vector(0)",
+          "legendFormat": "CRITICAL Events",
+          "refId": "A",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "rbt-prometheus"
+          },
+          "instant": true
+        }
+      ],
+      "options": {
+        "reduceOptions": {
+          "values": false,
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": ""
+        },
+        "colorMode": "background",
+        "graphMode": "area",
+        "orientation": "auto",
+        "textMode": "auto",
+        "justifyMode": "auto",
+        "noValue": "0"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "short",
+          "noValue": "0"
+        }
+      }
+    },
+    {
+      "id": 32,
+      "type": "stat",
+      "title": "HIGH Severity Events",
+      "gridPos": {
+        "x": 8,
+        "y": 65,
+        "w": 4,
+        "h": 4
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "rbt-prometheus"
+      },
+      "targets": [
+        {
+          "expr": "sum(rbt_risk_events_total{severity=\"HIGH\"}) or vector(0)",
+          "legendFormat": "HIGH Severity Events",
+          "refId": "A",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "rbt-prometheus"
+          },
+          "instant": true
+        }
+      ],
+      "options": {
+        "reduceOptions": {
+          "values": false,
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": ""
+        },
+        "colorMode": "background",
+        "graphMode": "area",
+        "orientation": "auto",
+        "textMode": "auto",
+        "justifyMode": "auto",
+        "noValue": "0"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "orange",
+                "value": 1
+              },
+              {
+                "color": "red",
+                "value": 10
+              }
+            ]
+          },
+          "unit": "short",
+          "noValue": "0"
+        }
+      }
+    },
+    {
+      "id": 33,
+      "type": "stat",
+      "title": "Most Active Risk Code",
+      "gridPos": {
+        "x": 12,
+        "y": 65,
+        "w": 6,
+        "h": 4
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "rbt-prometheus"
+      },
+      "targets": [
+        {
+          "expr": "topk(1, sum by(risk_code)(rbt_risk_events_total))",
+          "legendFormat": "{{risk_code}}",
+          "refId": "A",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "rbt-prometheus"
+          },
+          "instant": true
+        }
+      ],
+      "options": {
+        "reduceOptions": {
+          "values": false,
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": ""
+        },
+        "colorMode": "background",
+        "graphMode": "none",
+        "orientation": "auto",
+        "textMode": "value_and_name",
+        "justifyMode": "center",
+        "noValue": "No events yet"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              },
+              {
+                "color": "orange",
+                "value": 5
+              },
+              {
+                "color": "red",
+                "value": 20
+              }
+            ]
+          },
+          "noValue": "No events yet"
+        }
+      }
+    },
+    {
+      "id": 34,
+      "type": "stat",
+      "title": "Injection Attempts (INJ)",
+      "gridPos": {
+        "x": 18,
+        "y": 65,
+        "w": 6,
+        "h": 4
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "rbt-prometheus"
+      },
+      "targets": [
+        {
+          "expr": "sum(rbt_risk_events_total{risk_code=~\"RBT-INJ-.*\"}) or vector(0)",
+          "legendFormat": "Injection Attempts (INJ)",
+          "refId": "A",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "rbt-prometheus"
+          },
+          "instant": true
+        }
+      ],
+      "options": {
+        "reduceOptions": {
+          "values": false,
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": ""
+        },
+        "colorMode": "background",
+        "graphMode": "area",
+        "orientation": "auto",
+        "textMode": "auto",
+        "justifyMode": "auto",
+        "noValue": "0"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "short",
+          "noValue": "0"
+        }
+      }
+    },
+    {
+      "id": 35,
+      "type": "timeseries",
+      "title": "Risk Events Rate by Code (per minute)",
+      "gridPos": {
+        "x": 0,
+        "y": 69,
+        "w": 12,
+        "h": 8
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "rbt-prometheus"
+      },
+      "targets": [
+        {
+          "expr": "sum by(risk_code)(rate(rbt_risk_events_total[1m]))",
+          "legendFormat": "{{risk_code}}",
+          "refId": "A",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "rbt-prometheus"
+          }
+        }
+      ],
+      "options": {
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 10,
+            "spanNulls": true,
+            "drawStyle": "line",
+            "lineInterpolation": "stepAfter",
+            "showPoints": "never"
+          },
+          "color": {
+            "mode": "palette-classic"
+          },
+          "unit": "reqps",
+          "min": 0,
+          "noValue": "0"
+        },
+        "overrides": []
+      }
+    },
+    {
+      "id": 36,
+      "type": "timeseries",
+      "title": "Risk Events by Severity",
+      "gridPos": {
+        "x": 12,
+        "y": 69,
+        "w": 12,
+        "h": 8
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "rbt-prometheus"
+      },
+      "targets": [
+        {
+          "expr": "sum(rate(rbt_risk_events_total{severity=\"CRITICAL\"}[1m]))",
+          "legendFormat": "CRITICAL",
+          "refId": "A",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "rbt-prometheus"
+          }
+        },
+        {
+          "expr": "sum(rate(rbt_risk_events_total{severity=\"HIGH\"}[1m]))",
+          "legendFormat": "HIGH",
+          "refId": "B",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "rbt-prometheus"
+          }
+        },
+        {
+          "expr": "sum(rate(rbt_risk_events_total{severity=\"MEDIUM\"}[1m]))",
+          "legendFormat": "MEDIUM",
+          "refId": "C",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "rbt-prometheus"
+          }
+        },
+        {
+          "expr": "sum(rate(rbt_risk_events_total{severity=\"LOW\"}[1m]))",
+          "legendFormat": "LOW",
+          "refId": "D",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "rbt-prometheus"
+          }
+        }
+      ],
+      "options": {
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom"
+        }
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "lineWidth": 2,
+            "fillOpacity": 10,
+            "spanNulls": true,
+            "drawStyle": "line",
+            "lineInterpolation": "linear",
+            "showPoints": "never"
+          },
+          "color": {
+            "mode": "palette-classic"
+          },
+          "unit": "reqps",
+          "min": 0,
+          "noValue": "0"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "CRITICAL"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "mode": "fixed",
+                  "fixedColor": "dark-red"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "HIGH"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "mode": "fixed",
+                  "fixedColor": "orange"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "MEDIUM"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "mode": "fixed",
+                  "fixedColor": "yellow"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "LOW"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "mode": "fixed",
+                  "fixedColor": "green"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 37,
+      "type": "table",
+      "title": "All Risk Codes \u2014 Event Count Ranking",
+      "gridPos": {
+        "x": 0,
+        "y": 77,
+        "w": 24,
+        "h": 8
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "rbt-prometheus"
+      },
+      "targets": [
+        {
+          "expr": "sort_desc(sum by(risk_code, severity)(rbt_risk_events_total))",
+          "legendFormat": "{{risk_code}} \u2014 {{severity}}",
+          "refId": "A",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "rbt-prometheus"
+          },
+          "instant": true
+        }
+      ],
+      "options": {
+        "showHeader": true,
+        "sortBy": [
+          {
+            "displayName": "Value",
+            "desc": true
+          }
+        ]
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "auto",
+            "displayMode": "auto"
+          },
+          "noValue": "0",
+          "color": {
+            "mode": "thresholds"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "yellow",
+                "value": 1
+              },
+              {
+                "color": "orange",
+                "value": 5
+              },
+              {
+                "color": "red",
+                "value": 20
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "risk_code"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Risk Code"
+              },
+              {
+                "id": "custom.width",
+                "value": 160
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "severity"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Severity"
+              },
+              {
+                "id": "custom.width",
+                "value": 110
+              },
+              {
+                "id": "custom.displayMode",
+                "value": "color-background"
+              },
+              {
+                "id": "color",
+                "value": {
+                  "mode": "thresholds"
+                }
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": null
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "type": "value",
+                    "options": {
+                      "CRITICAL": {
+                        "color": "dark-red",
+                        "index": 0
+                      },
+                      "HIGH": {
+                        "color": "orange",
+                        "index": 1
+                      },
+                      "MEDIUM": {
+                        "color": "yellow",
+                        "index": 2
+                      },
+                      "LOW": {
+                        "color": "green",
+                        "index": 3
+                      },
+                      "INFO": {
+                        "color": "blue",
+                        "index": 4
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Value"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Total Events"
+              },
+              {
+                "id": "custom.width",
+                "value": 120
+              },
+              {
+                "id": "custom.displayMode",
+                "value": "color-background"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 38,
+      "type": "stat",
+      "title": "Total ML Predictions",
+      "gridPos": {
+        "x": 0,
+        "y": 56,
+        "w": 4,
+        "h": 4
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "rbt-prometheus"
+      },
+      "targets": [
+        {
+          "expr": "ml_prediction_seconds_count or vector(0)",
+          "legendFormat": "Total predictions",
+          "refId": "A",
+          "instant": true,
+          "datasource": {
+            "type": "prometheus",
+            "uid": "rbt-prometheus"
+          }
+        }
+      ],
+      "options": {
+        "reduceOptions": {
+          "values": false,
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": ""
+        },
+        "colorMode": "background",
+        "graphMode": "area",
+        "orientation": "auto",
+        "textMode": "auto",
+        "justifyMode": "auto",
+        "noValue": "0"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              },
+              {
+                "color": "green",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "short",
+          "noValue": "0"
+        }
+      }
+    },
+    {
+      "id": 39,
+      "type": "stat",
+      "title": "Avg ML Prediction Time",
+      "gridPos": {
+        "x": 4,
+        "y": 56,
+        "w": 4,
+        "h": 4
+      },
+      "datasource": {
+        "type": "prometheus",
+        "uid": "rbt-prometheus"
+      },
+      "targets": [
+        {
+          "expr": "rate(ml_prediction_seconds_sum[5m]) / rate(ml_prediction_seconds_count[5m])",
+          "legendFormat": "Avg time",
+          "refId": "A",
+          "instant": true,
+          "datasource": {
+            "type": "prometheus",
+            "uid": "rbt-prometheus"
+          }
+        }
+      ],
+      "options": {
+        "reduceOptions": {
+          "values": false,
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": ""
+        },
+        "colorMode": "background",
+        "graphMode": "area",
+        "orientation": "auto",
+        "textMode": "auto",
+        "justifyMode": "auto",
+        "noValue": "0s"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "yellow",
+                "value": 0.05
+              },
+              {
+                "color": "red",
+                "value": 0.2
+              }
+            ]
+          },
+          "unit": "s",
+          "noValue": "0s"
+        }
+      }
+    }
+  ]
+}
