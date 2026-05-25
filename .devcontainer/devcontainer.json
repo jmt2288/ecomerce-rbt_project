@@ -1,0 +1,28 @@
+{
+  "name": "RBT Security Project",
+  "image": "mcr.microsoft.com/devcontainers/python:3.11",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+  "forwardPorts": [8000, 3000, 9090, 6379],
+  "portsAttributes": {
+    "8000": { "label": "FastAPI",    "onAutoForward": "notify" },
+    "3000": { "label": "Grafana",    "onAutoForward": "notify" },
+    "9090": { "label": "Prometheus", "onAutoForward": "notify" },
+    "6379": { "label": "Redis",      "onAutoForward": "silent" }
+  },
+  "postCreateCommand": "pip install -r requirements.txt && python ml/train_model.py",
+  "postStartCommand": "docker compose up -d",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-azuretools.vscode-docker",
+        "rangav.vscode-thunder-client"
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "/usr/local/bin/python"
+      }
+    }
+  }
+}

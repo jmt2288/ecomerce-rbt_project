@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+test/__pycache__
+*.py[cod]
+*.pyo
+.env
+venv/
+.venv/
+*.egg-info/
+
+# ML model (se genera automáticamente con train_model.py)
+ml/bot_detector.pkl
+ml/training_data.csv
+
+# Test reports
+reports/
+.pytest_cache/
+*.html
+
+# Docker
+.docker/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/settings.json
+.idea/
